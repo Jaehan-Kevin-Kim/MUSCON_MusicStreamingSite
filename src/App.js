@@ -1,9 +1,12 @@
+import Background from "./components/Background";
+import Page1 from "./components/Page1";
 
 function App() {
   return (
-    <div className="App">
-    Hello
-    </div>
+    <>
+      {/* <Background /> */}
+      <Page1 />
+    </>
   );
 }
 
