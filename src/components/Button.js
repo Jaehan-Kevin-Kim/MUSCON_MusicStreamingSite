@@ -2,6 +2,42 @@ import React from "react";
 import styled from "@emotion/styled";
 import "./Button.css";
 
+const ButtonHover = styled.button`
+  position: relative;
+  appearance: none;
+  background-color: ${(props) => props.bgColor};
+  padding: 1em 2em;
+  border: none;
+  color: ${(props) => props.fontColor};
+  font-size: 1.2em;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+  border-radius: 100px;
+  text-transform: uppercase;
+
+  span {
+    position: relative;
+  }
+
+  &::before {
+    --size: 0;
+    content: "";
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size);
+    height: var(--size);
+    background: radial-gradient(circle closest-side, #4405f7, transparent);
+    transform: translate(-50%, -50%);
+    transition: width 1s ease, height 1s ease;
+  }
+
+  &:hover::before {
+    --size: 400px;
+  }
+`;
+
 const LargeButton = styled.button`
   margin-top: 43px;
   position: absolute;
@@ -38,8 +74,8 @@ const LargeButton = styled.button`
     top: -200px;
 
     background: transparent
-      linear-gradient(90deg, #1fe1e9 0%, #5e33d1 34%, #d34848 65%, #ffb33f 100%) 0% 0% no-repeat
-      padding-box;
+      linear-gradient(90deg, #1fe1e9 0%, #5e33d1 34%, #d34848 65%, #ffb33f 100%)
+      0% 0% no-repeat padding-box;
     animation: spin 3s linear infinite;
   }
 
@@ -57,21 +93,31 @@ const LargeButton = styled.button`
 const SmallButton = styled.button`
   // color: #d34848;
   color: ${(props) => props.fontColor};
-  position: absolute !important;
+  /* position: absolute !important; */
   top: 95px;
-  right: 79px;
+  background-color: ${(props) => props.bgColor};
+  /* right: 79px; */
 `;
 
-const Button = ({ name, size, fontColor }) => {
+const Button = ({ name, size, fontColor, bgColor }) => {
   console.log("fontColor", fontColor);
   return (
     <>
-      {size === "large" ? (
+      {size === "large" && (
         <LargeButton className="btn__large">{name}</LargeButton>
-      ) : (
-        <SmallButton className="btn__small" fontColor={fontColor}>
+      )}
+      {size === "small" && (
+        <SmallButton
+          className="btn__small"
+          fontColor={fontColor}
+          bgColor={bgColor}>
           {name}
         </SmallButton>
+      )}
+      {size === "hover" && (
+        <ButtonHover fontColor={fontColor} bgColor={bgColor}>
+          {name}
+        </ButtonHover>
       )}
     </>
   );

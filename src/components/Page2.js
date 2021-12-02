@@ -5,11 +5,9 @@ import styled from "@emotion/styled";
 import Slick from "react-slick";
 import useEmblaCarousel from "embla-carousel-react";
 
-import Background from "./Background";
-import Image1 from "../asset/images/Hero_Image1.png";
-import Image2 from "../asset/images/Hero_Image2.png";
-import Image3 from "../asset/images/Hero_Image3.png";
 import Button from "./Button";
+import Audio1 from "../asset/images/Audio1.png";
+import Audio2 from "../asset/images/Audio2.png";
 
 // const P1Container = styled.div``;
 
@@ -27,6 +25,7 @@ const HamburgerBar = styled.div`
   height: 7px;
   position: relative;
   background: white 0% 0% no-repeat padding-box;
+
   opacity: 1;
 
   &::after,
@@ -36,6 +35,7 @@ const HamburgerBar = styled.div`
     width: 100%;
     height: 7px;
     background: white 0% 0% no-repeat padding-box;
+
     opacity: 1;
   }
 
@@ -50,7 +50,7 @@ const HamburgerBar = styled.div`
 
 const Title = styled.h1`
   margin-top: 355px;
-  text-align: center;
+  // text-align: center;
   font-size: 65px;
   font-weight: 600;
   text-transform: uppercase;
@@ -64,12 +64,13 @@ const Title = styled.h1`
 
 const SubTitle = styled.p`
   width: 820px;
-  margin: 0 auto;
-  margin-top: 32px;
-  text-align: center;
+  /* margin: 0 auto; */
+  margin-top: 25px;
+  /* text-align: center; */
   font-size: 32px;
+  font-weight: 500;
   letter-spacing: 3.2px;
-  color: #ffffff;
+  color: #000;
   opacity: 1;
 `;
 
@@ -106,6 +107,7 @@ export const ImgWrapper = styled.div`
 const HamburgerClicked = styled.div`
   position: absolute;
   background: black;
+
   top: -300px;
   left: -300px;
   border-radius: 50%;
@@ -151,9 +153,9 @@ const HamburgerClicked = styled.div`
   }
 `;
 
-const Page1 = () => {
+const Page2 = () => {
   const [emblaRef] = useEmblaCarousel();
-  const [bgImages, setBgImages] = useState([Image1, Image2, Image3]);
+
   const [currentSlide, setCurrentSlide] = useState(0);
   const [hamburgerClicked, setHamburgerClicked] = useState(false);
 
@@ -162,37 +164,41 @@ const Page1 = () => {
     setHamburgerClicked((prev) => !prev);
   }, []);
 
+  const onMouseMove = (e) => {
+    //   document.onmouse
+    document.onmousemove = (e) => {
+      console.log(e);
+      const x = e.pageX - e.target.offsetLeft;
+      const y = e.pageY - e.target.offsetTop;
+      e.target.style.setProperty("--x", `${x}px`);
+      e.target.style.setProperty("--y", `${y}px`);
+    };
+    // const x = e.pageX - e.target.offsetLeft;
+    // const y = e.pageY - e.target.offsetTop;
+    // e.target.style.setProperty("--x", `${x}px`);
+    // e.target.style.setProperty("--y", `${y}px`);
+  };
+
   return (
     // <P1Container>
     <>
       {/* <Background /> */}
 
-      <div className={css``}>
-        {/* <SlickWrapper>
-          <div>
-            <Slick
-              initialSlide={0}
-              beforeChange={(slide, newSlide) => setCurrentSlide(newSlide)}
-              infinite
-              arrows={false}
-              slidesToShow={1}
-              slidesToScroll={1}>
-              {bgImages.map((v) => (
-                <ImgWrapper key={v}>
-                  <img src={v} alt={v} />
-                </ImgWrapper>
-              ))}
-            </Slick>
-          </div>
-        </SlickWrapper> */}
-        <Img src={Image1} alt="Image1" />
+      <div
+        className={css`
+          background-color: #d34848;
 
+          height: 1080px;
+          width: 1920px;
+        `}>
         <header
           className={css`
             padding: 86px 0 0 83px;
             display: flex;
             align-items: center;
+            width: 100%;
             height: 87px;
+            justify-content: space-between;
           `}>
           <div
             className={css`
@@ -248,6 +254,7 @@ const Page1 = () => {
                       className={css`
                         position: absolute;
                         background: blue;
+                        
                         top: -30%;
                         border-radius: 50%;
                         width: 60px;
@@ -276,74 +283,108 @@ const Page1 = () => {
               MUS|CON
             </span>
           </div>
+          <Button
+            name={"Try It Now"}
+            size={"small"}
+            fontColor={"#d34848"}
+            bgColor={"white"}
+          />
           <div></div>
         </header>
         <main
           className={css`
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding-right: 250px;
+            padding-left: 200px;
           `}>
-          <Title>Interactive concert experience</Title>
-          <SubTitle>
-            Experience your favorite artists like never before and from the
-            comfort of your own home
-          </SubTitle>
           <div
             className={css`
+              display: flex;
+              flex-direction: column;
+              margin-top: -150px;
+            `}>
+            <Title>SUPERIOR SOUND</Title>
+            <SubTitle>
+              Experience live versions of your favorite songs.
+            </SubTitle>
+            <div
+              className={css`
+                position: relative;
+              `}>
+              <Button
+                onMouseMove={onMouseMove}
+                name={"See Demo"}
+                bgColor={"white"}
+                fontColor={"#d34848"}
+                size={"hover"}
+              />
+            </div>
+          </div>
+          <div
+            className={css`
+              display: flex;
+              flex-direction: column;
               position: relative;
             `}>
-            <Button
-              // className={css`
-              //   position: absolute;
-              //   height: 100px;
-              //   width: 320px;
-              //   left: 818px;
-              //   bottom: 326px;
+            <div
+              className={css`
+                display: flex;
+              `}>
+              <img
+                src={Audio1}
+                alt="Audio1"
+                className={css`
+                  width: 250px;
+                  height: fit-content;
+                  margin-top: 150px;
+                `}
+              />
 
-              //   &::before {
-              //     // content: ${(props) => props.name};
-              //     content: "";
-              //     position: absolute;
-              //     width: 100%;
-              //     height: 100%;
-              //     top: 28px;
-              //     left: 0;
-              //     right: 0;
-              //     bottom: 0;
-              //     // font-size: 25px;
-              //     // letter-spacing: 6px;
-              //     // font-weight: 700;
-              //     // cursor: pointer;
-              //   }
+              <img
+                src={Audio2}
+                alt="Audio2"
+                className={css`
+                  margin-top: 250px;
+                  width: 250px;
+                  height: fit-content;
+                `}
+              />
+            </div>
 
-              //   &::after {
-              //     content: "";
-              //     height: 500px;
-              //     width: 500px;
-              //     position: absolute;
-              //     z-index: -1;
-              //     left: -90px;
-              //     top: -200px;
-
-              //     background: transparent
-              //       linear-gradient(90deg, #1fe1e9 0%, #5e33d1 34%, #d34848 65%, #ffb33f 100%) 0% 0%
-              //       no-repeat padding-box;
-              //     animation: spin 3s linear infinite;
-              //   }
-
-              //   &:hover::after {
-              //     opacity: 0.8;
-              //     outline: #1fe1e9;
-              //   }
-              //   @keyframes spin {
-              //     100% {
-              //       transform: rotate(360deg);
-              //     }
-              //   }
-              // `}
-              name={"Try It Now"}
-              size={"large"}
-            />
+            <div
+              className={css`
+                position: abosolute;
+                bottom: -20px;
+                right: 180px;
+                /* margin-top: -100px;
+                 */
+                margin-bottom: 100px;
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                border: 1px white solid;
+                color: white;
+                margin: auto auto;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+              `}>
+              <span
+                className={css`
+                  /* margin: auto auto; */
+                  font-size: large;
+                  font-weight: bolder;
+                  text-transform: uppercase;
+                `}>
+                Click
+              </span>
+              {/* Click */}
+            </div>
           </div>
         </main>
       </div>
@@ -353,4 +394,4 @@ const Page1 = () => {
   );
 };
 
-export default Page1;
+export default Page2;
