@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 // import styled from 'styled-components';
 import { css } from "@emotion/css";
 import styled from "@emotion/styled";
@@ -8,6 +8,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Button from "./Button";
 import Audio1 from "../asset/images/Audio1.png";
 import Audio2 from "../asset/images/Audio2.png";
+import url from "../asset/music/music.mp3";
 
 // const P1Container = styled.div``;
 
@@ -159,6 +160,28 @@ const Page2 = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [hamburgerClicked, setHamburgerClicked] = useState(false);
 
+  const useAudio = (url) => {
+    const [audio] = useState(new Audio(url));
+    const [playing, setPlaying] = useState(false);
+
+    const toggle = () => setPlaying(!playing);
+
+    useEffect(() => {
+      playing ? audio.play() : audio.pause();
+    }, [playing]);
+
+    useEffect(() => {
+      audio.addEventListener("ended", () => setPlaying(false));
+      return () => {
+        audio.removeEventListener("ended", () => setPlaying(false));
+      };
+    }, []);
+
+    return [playing, toggle];
+  };
+
+  const [playing, toggle] = useAudio(url);
+
   const onClickHamburger = useCallback(() => {
     console.log("clicked");
     setHamburgerClicked((prev) => !prev);
@@ -196,7 +219,7 @@ const Page2 = () => {
             padding: 86px 0 0 83px;
             display: flex;
             align-items: center;
-            width: 100%;
+            width: 80%;
             height: 87px;
             justify-content: space-between;
           `}>
@@ -289,7 +312,7 @@ const Page2 = () => {
             fontColor={"#d34848"}
             bgColor={"white"}
           />
-          <div></div>
+          {/* <div></div> */}
         </header>
         <main
           className={css`
@@ -355,8 +378,10 @@ const Page2 = () => {
             </div>
 
             <div
+              onClick={toggle}
               className={css`
                 position: abosolute;
+                margin-top: -100px !important;
                 bottom: -20px;
                 right: 180px;
                 /* margin-top: -100px;
@@ -373,6 +398,11 @@ const Page2 = () => {
                 justify-content: center;
                 align-items: center;
                 cursor: pointer;
+
+                &:hover {
+                  background: white;
+                  color: black;
+                }
               `}>
               <span
                 className={css`
@@ -382,8 +412,8 @@ const Page2 = () => {
                   text-transform: uppercase;
                 `}>
                 Click
+                {/* {playing ? "Click" : "Click"} */}
               </span>
-              {/* Click */}
             </div>
           </div>
         </main>
