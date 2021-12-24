@@ -154,7 +154,33 @@ const HamburgerClicked = styled.div`
   }
 `;
 
-const Page3 = () => {
+const ListWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  color: #d34848;
+`;
+
+const ListHeader = styled.p`
+  font-size: 35px;
+  &.first {
+    color: #d34848;
+  }
+  &.second {
+    color: #1fe1e9;
+  }
+  &.third {
+    color: #ffb33f;
+  }
+`;
+
+const ListP = styled.p`
+  font-size: 20px;
+  color: #fff;
+  letter-spacing: 0.1px;
+`;
+
+const Page4 = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [hamburgerClicked, setHamburgerClicked] = useState(false);
 
@@ -163,52 +189,17 @@ const Page3 = () => {
     setHamburgerClicked((prev) => !prev);
   }, []);
 
-  const onMouseMove = (e) => {
-    //   document.onmouse
-    document.onmousemove = (e) => {
-      console.log(e);
-      const x = e.pageX - e.target.offsetLeft;
-      const y = e.pageY - e.target.offsetTop;
-      e.target.style.setProperty("--x", `${x}px`);
-      e.target.style.setProperty("--y", `${y}px`);
-    };
-  };
-
   return (
     <>
       <div
         className={css`
           /* display: block; */
           position: relative;
-          background-color: #ffb33f;
+          background-color: #191919;
 
           height: 1080px;
           width: 1920px;
         `}>
-        <div
-          className={css`
-            position: absolute;
-            top: 30em;
-            left: 20em;
-            width: 15%;
-            height: 25%;
-            border-radius: 50%;
-            /* background-image: url("../asset/images/Hero_Image3.png"); */
-            background: black;
-            z-index: 1;
-            &::after {
-              content: "";
-              position: absolute;
-              top: -120px;
-              left: 150px;
-              width: 200px;
-              height: 200px;
-              border-radius: 50%;
-              /* background-image: url("../asset/images/Hero_Image3.png"); */
-              background: black;
-              z-index: 2;
-            }
-          `}></div>
         <div
           className={css`
             position: absolute;
@@ -309,64 +300,48 @@ const Page3 = () => {
               flex-direction: column;
               margin-top: -150px;
             `}>
-            <Title>SUPERIOR SOUND</Title>
-            <SubTitle>
-              Experience live versions of your favorite songs.
-            </SubTitle>
+            <Title>PERKS</Title>
             <div
               className={css`
-                position: relative;
+                // margin: 0 auto;
+                display: grid;
+                grid-template-columns: 220px 220px 220px;
+                // align-items: center;
+                grid-gap: 150px;
+                // padding: 0 50px;
               `}>
-              <Button
-                onMouseMove={onMouseMove}
-                name={"See Demo"}
-                bgColor={"white"}
-                fontColor={"#d34848"}
-                size={"hover"}
-              />
-            </div>
-          </div>
-          <div
-            className={css`
-              display: flex;
-              flex-direction: column;
-              position: relative;
-            `}>
-            <div
-              className={css`
-                position: abosolute;
-                margin-top: -100px !important;
-                bottom: -20px;
-                right: 180px;
-                /* margin-top: -100px;
-                 */
-                margin-bottom: 100px;
-                width: 100px;
-                height: 100px;
-                border-radius: 50%;
-                border: 1px white solid;
-                color: white;
-                margin: auto auto;
-                text-align: center;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-
-                &:hover {
-                  background: white;
-                  color: black;
-                }
-              `}>
-              <span
-                className={css`
-                  /* margin: auto auto; */
-                  font-size: large;
-                  font-weight: bolder;
-                  text-transform: uppercase;
-                `}>
-                Click
-              </span>
+              <ListWrap>
+                <p>_______</p>
+                <ListHeader className="first">
+                  Subscription Payment Model
+                </ListHeader>
+                {/* <h3></h3> 
+                <h3></h3> */}
+                <ListP>
+                  No commitment, cancel anytime. Never worry about forgetting a
+                  payment again!
+                </ListP>
+              </ListWrap>
+              <ListWrap>
+                <p>_______</p>
+                <ListHeader className="second">
+                  No Fee Cancelation Policy
+                </ListHeader>
+                <ListP>
+                  No commitment, cancel anytime. Never worry about forgetting a
+                  payment again!
+                </ListP>
+              </ListWrap>
+              <ListWrap>
+                <p>_______</p>
+                <ListHeader className="third">
+                  Subscription Payment Model
+                </ListHeader>
+                <ListP>
+                  No commitment, cancel anytime. Never worry about forgetting a
+                  payment again!
+                </ListP>
+              </ListWrap>
             </div>
           </div>
         </main>
@@ -375,4 +350,4 @@ const Page3 = () => {
   );
 };
 
-export default Page3;
+export default Page4;
