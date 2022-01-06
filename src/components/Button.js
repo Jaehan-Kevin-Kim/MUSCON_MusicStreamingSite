@@ -99,23 +99,26 @@ const SmallButton = styled.button`
   /* right: 79px; */
 `;
 
-const Button = ({ name, size, fontColor, bgColor }) => {
+const Button = ({ name, size, fontColor, bgColor, style }) => {
   console.log("fontColor", fontColor);
   return (
     <>
       {size === "large" && (
-        <LargeButton className="btn__large">{name}</LargeButton>
+        <LargeButton className="btn__large" style={style}>
+          {name}
+        </LargeButton>
       )}
       {size === "small" && (
         <SmallButton
           className="btn__small"
           fontColor={fontColor}
-          bgColor={bgColor}>
+          bgColor={bgColor}
+          style={style}>
           {name}
         </SmallButton>
       )}
       {size === "hover" && (
-        <ButtonHover fontColor={fontColor} bgColor={bgColor}>
+        <ButtonHover fontColor={fontColor} bgColor={bgColor} style={style}>
           {name}
         </ButtonHover>
       )}

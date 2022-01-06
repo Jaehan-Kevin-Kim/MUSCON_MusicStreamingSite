@@ -4,6 +4,9 @@ import Page2 from "./components/Page2";
 import Page3 from "./components/Page3";
 import Page4 from "./components/Page4";
 import Page5 from "./components/Page5";
+import Page6 from "./components/Page6";
+import PricingPage from "./components/PricingPage";
+import Payment from "./components/Payment";
 
 function App() {
   return (
@@ -24,10 +27,12 @@ function App() {
       <br />
       <br />
       <div style={{ height: "500px" }}></div> */}
-
       {/* <Page3 /> */}
       {/* <Page4 /> */}
-      <Page5 />
+      {/* <Page5 /> */}
+      {/* <Page6 /> */}
+      {/* <PricingPage /> */}
+      <Payment />
     </>
   );
 }
