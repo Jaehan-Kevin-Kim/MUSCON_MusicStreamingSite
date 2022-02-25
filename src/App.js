@@ -27,12 +27,14 @@ function App() {
       <br />
       <br />
       <div style={{ height: "500px" }}></div> */}
-      {/* <Page3 /> */}
-      {/* <Page4 /> */}
-      {/* <Page5 /> */}
-      {/* <Page6 /> */}
+      <Page1 />
+      <Page2 />
+      <Page3 />
+      <Page4 />
+      <Page5 />
+      <Page6 />
       {/* <PricingPage /> */}
-      <Payment />
+      {/* <Payment /> */}
     </>
   );
 }

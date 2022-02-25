@@ -163,29 +163,20 @@ const Page1 = () => {
   }, []);
 
   return (
-    // <P1Container>
     <>
       {/* <Background /> */}
 
-      <div className={css``}>
-        {/* <SlickWrapper>
-          <div>
-            <Slick
-              initialSlide={0}
-              beforeChange={(slide, newSlide) => setCurrentSlide(newSlide)}
-              infinite
-              arrows={false}
-              slidesToShow={1}
-              slidesToScroll={1}>
-              {bgImages.map((v) => (
-                <ImgWrapper key={v}>
-                  <img src={v} alt={v} />
-                </ImgWrapper>
-              ))}
-            </Slick>
-          </div>
-        </SlickWrapper> */}
-        <Img src={Image1} alt="Image1" />
+      <div
+        className={css`
+          height: 100vh;
+          /* width: 1920px; */
+          width: 100vw;
+        `}>
+        <Img
+          src={Image1}
+          alt="Image1"
+          style={{ width: "100vw", height: "100vh", objectFit: "cover" }}
+        />
 
         <header
           className={css`
@@ -199,16 +190,12 @@ const Page1 = () => {
               display: flex;
               align-items: center;
             `}>
-            {/* {hamburgerClicked ? <HamburgerClicked> <Hamburger onClick={onClickHamburger} >
-                        <HamburgerBar class="bar"></HamburgerBar>
-                    </Hamburger></HamburgerClicked> :  */}
             <div
               className={css`
                 /* position: relative; */
               `}>
               {hamburgerClicked && (
                 <>
-                  {/* <StyleRoot> */}
                   <span
                     className={css`
                       position: absolute;
@@ -223,10 +210,7 @@ const Page1 = () => {
                     `}>
                     MUS|CON
                   </span>
-                  <HamburgerClicked
-                    className={css``}
-                    // style={styles.fadeIn}
-                  ></HamburgerClicked>
+                  <HamburgerClicked className={css``}></HamburgerClicked>
                   <ul
                     className={css`
                       position: absolute;
@@ -241,22 +225,6 @@ const Page1 = () => {
                     <li>PERKS</li>
                     <li>PRICING</li>
                   </ul>
-
-                  {/* </StyleRoot> */}
-                  {/* <StyleRoot>
-                    <div
-                      className={css`
-                        position: absolute;
-                        background: blue;
-                        top: -30%;
-                        border-radius: 50%;
-                        width: 60px;
-                        height: 60px;
-                        transform: scale(3);
-                        transition: 3s linear;
-                      `}
-                      style={styles.zoomIn}></div>
-                  </StyleRoot> */}
                 </>
               )}
               <Hamburger onClick={onClickHamburger}>
@@ -292,63 +260,10 @@ const Page1 = () => {
             className={css`
               position: relative;
             `}>
-            <Button
-              // className={css`
-              //   position: absolute;
-              //   height: 100px;
-              //   width: 320px;
-              //   left: 818px;
-              //   bottom: 326px;
-
-              //   &::before {
-              //     // content: ${(props) => props.name};
-              //     content: "";
-              //     position: absolute;
-              //     width: 100%;
-              //     height: 100%;
-              //     top: 28px;
-              //     left: 0;
-              //     right: 0;
-              //     bottom: 0;
-              //     // font-size: 25px;
-              //     // letter-spacing: 6px;
-              //     // font-weight: 700;
-              //     // cursor: pointer;
-              //   }
-
-              //   &::after {
-              //     content: "";
-              //     height: 500px;
-              //     width: 500px;
-              //     position: absolute;
-              //     z-index: -1;
-              //     left: -90px;
-              //     top: -200px;
-
-              //     background: transparent
-              //       linear-gradient(90deg, #1fe1e9 0%, #5e33d1 34%, #d34848 65%, #ffb33f 100%) 0% 0%
-              //       no-repeat padding-box;
-              //     animation: spin 3s linear infinite;
-              //   }
-
-              //   &:hover::after {
-              //     opacity: 0.8;
-              //     outline: #1fe1e9;
-              //   }
-              //   @keyframes spin {
-              //     100% {
-              //       transform: rotate(360deg);
-              //     }
-              //   }
-              // `}
-              name={"Try It Now"}
-              size={"large"}
-            />
+            <Button name={"Try It Now"} size={"large"} />
           </div>
         </main>
       </div>
-
-      {/* </P1Container> */}
     </>
   );
 };

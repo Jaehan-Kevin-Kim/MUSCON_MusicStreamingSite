@@ -198,7 +198,7 @@ const Page4 = () => {
           background-color: #191919;
 
           height: 1080px;
-          width: 1920px;
+          width: 100vw;
         `}>
         <div
           className={css`

@@ -219,7 +219,7 @@ const Page5 = () => {
           background-color: #1fe1e9;
 
           height: 1080px;
-          width: 1920px;
+          width: 100vw;
         `}>
         <div
           className={css`

@@ -210,9 +210,10 @@ const Page2 = () => {
       <div
         className={css`
           background-color: #d34848;
-
           height: 1080px;
-          width: 1920px;
+          width: 100vw;
+          /* height: 1080px;
+          width: 1920px; */
         `}>
         <header
           className={css`

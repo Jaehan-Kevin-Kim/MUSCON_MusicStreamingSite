@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { css } from "@emotion/css";
 import styled from "@emotion/styled";
 import { PaymentData } from "../asset/PaymentData";
@@ -56,6 +56,7 @@ const PaymentQ = styled.div`
 const QPlanLabel = styled.label`
   font-size: 37px;
   margin-right: 80px;
+
   &.basic {
     color: #d24848;
   }
@@ -71,6 +72,8 @@ const QPlanInput = styled.input`
   height: 20px;
   width: 20px;
   margin-right: 10px;
+  position: absolute;
+  opacity: 0;
 `;
 
 const QLabel = styled.label`
@@ -148,6 +151,12 @@ const Button = styled.button`
 `;
 
 const Payment = () => {
+  // const textInput = useRef(null);
+
+  // useEffect(() => {
+  //   textInput.current.focus();
+  // }, []);
+
   return (
     <>
       {/* All page */}
@@ -200,7 +209,23 @@ const Payment = () => {
                 }
               `}>
               <PaymentTitle>Payment</PaymentTitle>
-              <form>
+              <form
+                className={css`
+                  input:focus {
+                    outline: none !important;
+                    outline-offset: none !important;
+                    box-shadow: none !important;
+                    border: 1px solid black;
+                    border-bottom: 3px solid #2f1fe9;
+                  }
+                  select:focus {
+                    outline: none !important;
+                    outline-offset: none !important;
+                    box-shadow: none !important;
+                    border: 1px solid black;
+                    border-bottom: 3px solid #2f1fe9;
+                  }
+                `}>
                 <div>
                   <PaymentQ>1. Select your plan</PaymentQ>
                   <div
@@ -217,49 +242,47 @@ const Payment = () => {
                             content: "";
                             background: #fff;
                             border-radius: 100%;
-                            box-shadow: inset 0 0 0 4px black;
+                            box-shadow: inset 0 0 0 3px black;
                             display: inline-block;
                             width: 1em;
                             height: 1em;
                             position: relative;
-                            top: -0.2em;
+                            /* top: -0.2em; */
                             margin-right: 1em;
                             vertical-align: top;
                             cursor: pointer;
                             text-align: center;
-                            transition: all 250ms ease;
+                            /* transition: all 250ms ease; */
                           }
                         }
+                      }
+
+                      input[type="radio"]:nth-child(1) {
                         &:checked {
                           + label {
                             &:before {
-                              background-color: blue;
-                              /* box-shadow: inset 0 0 0 4px black; */
-                              border: none;
+                              background-color: #d24848;
+                              box-shadow: none;
                             }
                           }
                         }
-                        &:focus {
+                      }
+                      input[type="radio"]:nth-child(3) {
+                        &:checked {
                           + label {
                             &:before {
-                              outline: none;
-                              border: none;
+                              background-color: #ffb33f;
+                              box-shadow: none;
                             }
                           }
                         }
-                        &:disabled {
+                      }
+                      input[type="radio"]:nth-child(5) {
+                        &:checked {
                           + label {
                             &:before {
-                              box-shadow: inset 0 0 0 4px black;
-                              /* border: none; */
-                              background: black;
-                            }
-                          }
-                        }
-                        + label {
-                          &:empty {
-                            &:before {
-                              margin-right: 0;
+                              background-color: #1fe1e9;
+                              box-shadow: none;
                             }
                           }
                         }
@@ -270,20 +293,30 @@ const Payment = () => {
                       id="basic"
                       name="plan"
                       value="BASIC"
+                      className="basicR"
                     />
                     <QPlanLabel className="basic" htmlFor="basic">
                       BASIC
                     </QPlanLabel>
+
                     <QPlanInput
                       type="radio"
                       id="advanced"
                       name="plan"
                       value="ADVANCED"
+                      className="advencedR"
                     />
                     <QPlanLabel className="advenced" htmlFor="advanced">
                       ADVANCED
                     </QPlanLabel>
-                    <QPlanInput type="radio" id="pro" name="plan" value="PRO" />
+
+                    <QPlanInput
+                      type="radio"
+                      id="pro"
+                      name="plan"
+                      value="PRO"
+                      className="proR"
+                    />
                     <QPlanLabel className="pro" htmlFor="pro">
                       PRO
                     </QPlanLabel>
@@ -299,6 +332,7 @@ const Payment = () => {
                       display: flex;
                       flex-direction: column;
                       margin-right: 10px;
+
                       /* width: 45%; */
                     `}>
                     <PaymentQ>2. Billing Information</PaymentQ>

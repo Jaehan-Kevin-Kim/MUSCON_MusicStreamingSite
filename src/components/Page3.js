@@ -181,9 +181,10 @@ const Page3 = () => {
           /* display: block; */
           position: relative;
           background-color: #ffb33f;
-
           height: 1080px;
-          width: 1920px;
+          width: 100vw;
+          /* height: 1080px;
+          width: 1920px; */
         `}>
         <div
           className={css`

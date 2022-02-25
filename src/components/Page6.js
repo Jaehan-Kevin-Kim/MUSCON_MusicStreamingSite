@@ -139,7 +139,7 @@ const Page6 = () => {
         className={css`
           background: #191919;
           height: 814px;
-          width: 1920px;
+          width: 100vw;
           /* width: 100vw; */
         `}>
         {/* <Img src={Image1} alt="Image1" /> */}
@@ -248,6 +248,8 @@ const Page6 = () => {
           </div>
         </main>
       </div>
+
+      {/* footer */}
       <div
         className={css`
           background: #5e33d1;
@@ -255,7 +257,7 @@ const Page6 = () => {
           flex-direction: column;
           color: white;
           align-items: center;
-          width: 1920px;
+          width: 100vw;
           height: 538px;
         `}>
         <p
